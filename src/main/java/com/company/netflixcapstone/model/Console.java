@@ -2,7 +2,7 @@ package com.company.netflixcapstone.model;
 
 import java.util.Objects;
 
-public class Consoles {
+public class Console {
     private int console_id;
     private String model;
     private String manufacturer;
@@ -70,8 +70,8 @@ public class Consoles {
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
-        if (!(o instanceof Consoles)) return false;
-        Consoles consoles = (Consoles) o;
+        if (!(o instanceof Console)) return false;
+        Console consoles = (Console) o;
         return console_id == consoles.console_id && Double.compare(consoles.price, price) == 0 && quantity == consoles.quantity && Objects.equals(model, consoles.model) && Objects.equals(manufacturer, consoles.manufacturer) && Objects.equals(memory_amount, consoles.memory_amount) && Objects.equals(processor, consoles.processor);
     }
 
