@@ -1,5 +1,6 @@
 package com.company.netflixcapstone.controllers;
 
+import com.company.netflixcapstone.model.Console;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 

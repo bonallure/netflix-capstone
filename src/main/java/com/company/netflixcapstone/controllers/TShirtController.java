@@ -1,6 +1,7 @@
 package com.company.netflixcapstone.controllers;
 
 
+import com.company.netflixcapstone.model.TShirt;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
