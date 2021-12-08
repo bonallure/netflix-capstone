@@ -1,22 +1,23 @@
 package com.company.netflixcapstone.model;
 
+import java.math.BigDecimal;
 import java.util.Objects;
 
 public class Console {
-    private int console_id;
+    private int id;
     private String model;
     private String manufacturer;
-    private String memory_amount;
+    private String memoryAmount;
     private String processor;
-    private double price;
+    private BigDecimal price;
     private int quantity;
 
-    public int getConsole_id() {
-        return console_id;
+    public int getId() {
+        return id;
     }
 
-    public void setConsole_id(int console_id) {
-        this.console_id = console_id;
+    public void setId(int id) {
+        this.id = id;
     }
 
     public String getModel() {
@@ -35,12 +36,12 @@ public class Console {
         this.manufacturer = manufacturer;
     }
 
-    public String getMemory_amount() {
-        return memory_amount;
+    public String getMemoryAmount() {
+        return memoryAmount;
     }
 
-    public void setMemory_amount(String memory_amount) {
-        this.memory_amount = memory_amount;
+    public void setMemoryAmount(String memoryAmount) {
+        this.memoryAmount = memoryAmount;
     }
 
     public String getProcessor() {
@@ -51,11 +52,11 @@ public class Console {
         this.processor = processor;
     }
 
-    public double getPrice() {
+    public BigDecimal getPrice() {
         return price;
     }
 
-    public void setPrice(double price) {
+    public void setPrice(BigDecimal price) {
         this.price = price;
     }
 
@@ -71,12 +72,27 @@ public class Console {
     public boolean equals(Object o) {
         if (this == o) return true;
         if (!(o instanceof Console)) return false;
-        Console consoles = (Console) o;
-        return console_id == consoles.console_id && Double.compare(consoles.price, price) == 0 && quantity == consoles.quantity && Objects.equals(model, consoles.model) && Objects.equals(manufacturer, consoles.manufacturer) && Objects.equals(memory_amount, consoles.memory_amount) && Objects.equals(processor, consoles.processor);
+
+        Console console = (Console) o;
+
+        if (id != console.id) return false;
+        if (quantity != console.quantity) return false;
+        if (!model.equals(console.model)) return false;
+        if (!manufacturer.equals(console.manufacturer)) return false;
+        if (!memoryAmount.equals(console.memoryAmount)) return false;
+        if (!processor.equals(console.processor)) return false;
+        return price.equals(console.price);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(console_id, model, manufacturer, memory_amount, processor, price, quantity);
+        int result = id;
+        result = 31 * result + model.hashCode();
+        result = 31 * result + manufacturer.hashCode();
+        result = 31 * result + memoryAmount.hashCode();
+        result = 31 * result + processor.hashCode();
+        result = 31 * result + price.hashCode();
+        result = 31 * result + quantity;
+        return result;
     }
 }

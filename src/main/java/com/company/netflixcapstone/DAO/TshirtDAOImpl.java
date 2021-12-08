@@ -2,7 +2,9 @@ package com.company.netflixcapstone.DAO;
 
 import com.company.netflixcapstone.model.TShirt;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.jdbc.core.JdbcTemplate;
+import org.springframework.stereotype.Repository;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -11,6 +13,7 @@ import java.util.List;
 /**
  * Created by bonallure on 12/7/21
  */
+@Repository
 public class TshirtDAOImpl implements TshirtDAO {
 
     // Prepare statements
@@ -41,37 +44,51 @@ public class TshirtDAOImpl implements TshirtDAO {
 
     @Override
     public TShirt create(TShirt tshirt) {
-        return null;
+        jdbcTemplate.update(UPDATE_TSHIRT,
+                tshirt.getSize(),
+                tshirt.getColor(),
+                tshirt.getDescription(),
+                tshirt.getPrice(),
+                tshirt.getQuantity());
+        int id = jdbcTemplate.queryForObject("select last_insert_id()", Integer.class);
+        tshirt.setId(id);
+
+        return tshirt;
     }
 
     @Override
     public TShirt read(int id) {
-        return null;
+
+        try {
+            return jdbcTemplate.queryForObject(READ_TSHIRT, this::mapToRowTShirt, id);
+        }
+        catch (EmptyResultDataAccessException e)
+        {
+            return null;
+        }
     }
 
     @Override
     public List<TShirt> readAll() {
-        return null;
+
+        return jdbcTemplate.query(READ_ALL_TSHIRTS, this::mapToRowTShirt);
     }
 
     @Override
     public void update(TShirt tshirt) {
-
+        jdbcTemplate.update(UPDATE_TSHIRT,
+                tshirt.getSize(),
+                tshirt.getColor(),
+                tshirt.getDescription(),
+                tshirt.getPrice(),
+                tshirt.getQuantity(),
+                tshirt.getId());
     }
 
     @Override
     public void delete(int id) {
         jdbcTemplate.update(DELETE_TSHIRT, id);
     }
-
-    /*
-    private int id;
-    private String size;
-    private String color;
-    private String description;
-    private BigDecimal price;
-    private int quantity;
-    */
 
     // mapToRowTshirt
     private TShirt mapToRowTShirt(ResultSet rs, int rowNum) throws SQLException {
