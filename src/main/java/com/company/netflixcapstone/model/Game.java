@@ -2,7 +2,7 @@ package com.company.netflixcapstone.model;
 
 import java.util.Objects;
 
-public class Games {
+public class Game {
     private int game_id;
     private String title;
     private String esrb_rating;
@@ -70,8 +70,8 @@ public class Games {
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
-        if (!(o instanceof Games)) return false;
-        Games games = (Games) o;
+        if (!(o instanceof Game)) return false;
+        Game games = (Game) o;
         return game_id == games.game_id &&
                 Double.compare(games.price, price) == 0 &&
                 quantity == games.quantity &&

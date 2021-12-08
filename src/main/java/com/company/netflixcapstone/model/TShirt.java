@@ -1,21 +1,23 @@
 package com.company.netflixcapstone.model;
 
+import java.math.BigDecimal;
 import java.util.Objects;
 
-public class TShirts {
-    private int t_shirt_id;
+public class TShirt {
+
+    private int id;
     private String size;
     private String color;
     private String description;
-    private double price;
+    private BigDecimal price;
     private int quantity;
 
-    public int getT_shirt_id() {
-        return t_shirt_id;
+    public int getId() {
+        return id;
     }
 
-    public void setT_shirt_id(int t_shirt_id) {
-        this.t_shirt_id = t_shirt_id;
+    public void setId(int id) {
+        this.id = id;
     }
 
     public String getSize() {
@@ -42,11 +44,11 @@ public class TShirts {
         this.description = description;
     }
 
-    public double getPrice() {
+    public BigDecimal getPrice() {
         return price;
     }
 
-    public void setPrice(double price) {
+    public void setPrice(BigDecimal price) {
         this.price = price;
     }
 
@@ -61,13 +63,26 @@ public class TShirts {
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
-        if (!(o instanceof TShirts)) return false;
-        TShirts tShirts = (TShirts) o;
-        return t_shirt_id == tShirts.t_shirt_id && Double.compare(tShirts.price, price) == 0 && quantity == tShirts.quantity && Objects.equals(size, tShirts.size) && Objects.equals(color, tShirts.color) && Objects.equals(description, tShirts.description);
+        if (!(o instanceof TShirt)) return false;
+
+        TShirt tShirt = (TShirt) o;
+
+        if (id != tShirt.id) return false;
+        if (quantity != tShirt.quantity) return false;
+        if (!size.equals(tShirt.size)) return false;
+        if (!color.equals(tShirt.color)) return false;
+        if (!description.equals(tShirt.description)) return false;
+        return price.equals(tShirt.price);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(t_shirt_id, size, color, description, price, quantity);
+        int result = id;
+        result = 31 * result + size.hashCode();
+        result = 31 * result + color.hashCode();
+        result = 31 * result + description.hashCode();
+        result = 31 * result + price.hashCode();
+        result = 31 * result + quantity;
+        return result;
     }
 }
