@@ -16,15 +16,6 @@ import java.util.List;
 @Repository
 public class ConsoleDAOImpl implements ConsoleDAO {
 
-    /*
-    private int id;
-    private String model;
-    private String manufacturer;
-    private String memory_amount;
-    private String processor;
-    private double price;
-    private int quantity;*/
-
     // Prepare statements
     private static final String CREATE_CONSOLE =
             "INSERT INTO t_shirt (model, manufacturer, memory_amount, processor, price, quantity)" +
@@ -38,7 +29,7 @@ public class ConsoleDAOImpl implements ConsoleDAO {
 
     private static final String UPDATE_CONSOLE =
             "UPDATE console SET model = ?, manufacturer = ?, memory_amount = ?, processor = ?, price = ?," +
-                    " quantity = ? WHERE t_shirt_id = ?";
+                    " quantity = ? WHERE console_id = ?";
 
     private static final String DELETE_CONSOLE =
             "delete from console where console_id = ?";
