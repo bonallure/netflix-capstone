@@ -1,5 +1,6 @@
-package com.company.netflixcapstone.DAO;
+package com.company.netflixcapstone.dao.impl;
 
+import com.company.netflixcapstone.dao.GameDAO;
 import com.company.netflixcapstone.model.Game;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.EmptyResultDataAccessException;
@@ -13,8 +14,7 @@ import java.util.List;
 @Repository
 public class GameDaoImpl implements GameDAO {
 
-    private JdbcTemplate jdbcTemplate;
-
+    // prepare statements
     private static final String INSERT_GAME_SQL =
             "insert into game (game_id, title , esrb_rating , description , price, studio, quantity) values (?, ?, ?, ?, ?,?,?)";
 
@@ -31,6 +31,9 @@ public class GameDaoImpl implements GameDAO {
             "delete from game where game_id = ?";
 
 
+    // declaring and autowirjng the jdbc template
+    private JdbcTemplate jdbcTemplate;
+
     @Autowired
     public GameDaoImpl(JdbcTemplate jdbcTemplate) {
 
@@ -39,8 +42,7 @@ public class GameDaoImpl implements GameDAO {
 
     @Override
     public Game create(Game game) {
-        jdbcTemplate.update(
-                INSERT_GAME_SQL,
+        jdbcTemplate.update(INSERT_GAME_SQL,
                 game.getTitle(),
                 game.getEsrb_rating(),
                 game.getDescription(),

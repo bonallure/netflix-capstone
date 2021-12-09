@@ -1,4 +1,4 @@
-package com.company.netflixcapstone.DAO;
+package com.company.netflixcapstone.dao;
 
 import com.company.netflixcapstone.model.Console;
 

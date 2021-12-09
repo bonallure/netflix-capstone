@@ -1,5 +1,6 @@
-package com.company.netflixcapstone.DAO;
+package com.company.netflixcapstone.dao.impl;
 
+import com.company.netflixcapstone.dao.ConsoleDAO;
 import com.company.netflixcapstone.model.Console;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.EmptyResultDataAccessException;
@@ -18,7 +19,7 @@ public class ConsoleDAOImpl implements ConsoleDAO {
 
     // Prepare statements
     private static final String CREATE_CONSOLE =
-            "INSERT INTO t_shirt (model, manufacturer, memory_amount, processor, price, quantity)" +
+            "INSERT INTO console (model, manufacturer, memory_amount, processor, price, quantity)" +
                     " VALUES (?, ?, ?, ?, ?, ?)";
 
     public static final String READ_CONSOLE =
@@ -44,7 +45,7 @@ public class ConsoleDAOImpl implements ConsoleDAO {
 
     @Override
     public Console create(Console console) {
-        jdbcTemplate.update(UPDATE_CONSOLE,
+        jdbcTemplate.update(CREATE_CONSOLE,
                 console.getModel(),
                 console.getManufacturer(),
                 console.getMemoryAmount(),
