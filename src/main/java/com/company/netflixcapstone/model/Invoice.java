@@ -1,29 +1,30 @@
 package com.company.netflixcapstone.model;
 
-import java.util.Objects;
+import java.math.BigDecimal;
 
 public class Invoice {
-    private int invoice_id;
+
+    private int invoiceId;
     private String name;
     private String street;
     private String city;
     private String state;
     private String zipcode;
-    private String item_type;
-    private int item_id;
-    private double unit_price;
+    private String itemType;
+    private int itemId;
+    private BigDecimal unitPrice;
     private int quantity;
-    private double subtotal;
-    private double tax;
-    private double processing_fee;
-    private double total;
+    private BigDecimal subtotal;
+    private BigDecimal tax;
+    private BigDecimal processingFee;
+    private BigDecimal total;
 
-    public int getInvoice_id() {
-        return invoice_id;
+    public int getInvoiceId() {
+        return invoiceId;
     }
 
-    public void setInvoice_id(int invoice_id) {
-        this.invoice_id = invoice_id;
+    public void setInvoiceId(int invoiceId) {
+        this.invoiceId = invoiceId;
     }
 
     public String getName() {
@@ -66,28 +67,28 @@ public class Invoice {
         this.zipcode = zipcode;
     }
 
-    public String getItem_type() {
-        return item_type;
+    public String getItemType() {
+        return itemType;
     }
 
-    public void setItem_type(String item_type) {
-        this.item_type = item_type;
+    public void setItemType(String itemType) {
+        this.itemType = itemType;
     }
 
-    public int getItem_id() {
-        return item_id;
+    public int getItemId() {
+        return itemId;
     }
 
-    public void setItem_id(int item_id) {
-        this.item_id = item_id;
+    public void setItemId(int itemId) {
+        this.itemId = itemId;
     }
 
-    public double getUnit_price() {
-        return unit_price;
+    public BigDecimal getUnitPrice() {
+        return unitPrice;
     }
 
-    public void setUnit_price(double unit_price) {
-        this.unit_price = unit_price;
+    public void setUnitPrice(BigDecimal unitPrice) {
+        this.unitPrice = unitPrice;
     }
 
     public int getQuantity() {
@@ -98,35 +99,35 @@ public class Invoice {
         this.quantity = quantity;
     }
 
-    public double getSubtotal() {
+    public BigDecimal getSubtotal() {
         return subtotal;
     }
 
-    public void setSubtotal(double subtotal) {
+    public void setSubtotal(BigDecimal subtotal) {
         this.subtotal = subtotal;
     }
 
-    public double getTax() {
+    public BigDecimal getTax() {
         return tax;
     }
 
-    public void setTax(double tax) {
+    public void setTax(BigDecimal tax) {
         this.tax = tax;
     }
 
-    public double getProcessing_fee() {
-        return processing_fee;
+    public BigDecimal getProcessingFee() {
+        return processingFee;
     }
 
-    public void setProcessing_fee(double processing_fee) {
-        this.processing_fee = processing_fee;
+    public void setProcessingFee(BigDecimal processingFee) {
+        this.processingFee = processingFee;
     }
 
-    public double getTotal() {
+    public BigDecimal getTotal() {
         return total;
     }
 
-    public void setTotal(double total) {
+    public void setTotal(BigDecimal total) {
         this.total = total;
     }
 
@@ -134,12 +135,41 @@ public class Invoice {
     public boolean equals(Object o) {
         if (this == o) return true;
         if (!(o instanceof Invoice)) return false;
+
         Invoice invoice = (Invoice) o;
-        return invoice_id == invoice.invoice_id && item_id == invoice.item_id && Double.compare(invoice.unit_price, unit_price) == 0 && quantity == invoice.quantity && Double.compare(invoice.subtotal, subtotal) == 0 && Double.compare(invoice.tax, tax) == 0 && Double.compare(invoice.processing_fee, processing_fee) == 0 && Double.compare(invoice.total, total) == 0 && Objects.equals(name, invoice.name) && Objects.equals(street, invoice.street) && Objects.equals(city, invoice.city) && Objects.equals(state, invoice.state) && Objects.equals(zipcode, invoice.zipcode) && Objects.equals(item_type, invoice.item_type);
+
+        if (invoiceId != invoice.invoiceId) return false;
+        if (itemId != invoice.itemId) return false;
+        if (quantity != invoice.quantity) return false;
+        if (!name.equals(invoice.name)) return false;
+        if (!street.equals(invoice.street)) return false;
+        if (!city.equals(invoice.city)) return false;
+        if (!state.equals(invoice.state)) return false;
+        if (!zipcode.equals(invoice.zipcode)) return false;
+        if (!itemType.equals(invoice.itemType)) return false;
+        if (!unitPrice.equals(invoice.unitPrice)) return false;
+        if (!subtotal.equals(invoice.subtotal)) return false;
+        if (!tax.equals(invoice.tax)) return false;
+        if (!processingFee.equals(invoice.processingFee)) return false;
+        return total.equals(invoice.total);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(invoice_id, name, street, city, state, zipcode, item_type, item_id, unit_price, quantity, subtotal, tax, processing_fee, total);
+        int result = invoiceId;
+        result = 31 * result + name.hashCode();
+        result = 31 * result + street.hashCode();
+        result = 31 * result + city.hashCode();
+        result = 31 * result + state.hashCode();
+        result = 31 * result + zipcode.hashCode();
+        result = 31 * result + itemType.hashCode();
+        result = 31 * result + itemId;
+        result = 31 * result + unitPrice.hashCode();
+        result = 31 * result + quantity;
+        result = 31 * result + subtotal.hashCode();
+        result = 31 * result + tax.hashCode();
+        result = 31 * result + processingFee.hashCode();
+        result = 31 * result + total.hashCode();
+        return result;
     }
 }
