@@ -1,5 +1,6 @@
-package com.company.netflixcapstone.DAO;
+package com.company.netflixcapstone.dao.impl;
 
+import com.company.netflixcapstone.dao.TshirtDAO;
 import com.company.netflixcapstone.model.TShirt;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.EmptyResultDataAccessException;
@@ -44,12 +45,13 @@ public class TshirtDAOImpl implements TshirtDAO {
 
     @Override
     public TShirt create(TShirt tshirt) {
-        jdbcTemplate.update(UPDATE_TSHIRT,
+        jdbcTemplate.update(CREATE_TSHIRT,
                 tshirt.getSize(),
                 tshirt.getColor(),
                 tshirt.getDescription(),
                 tshirt.getPrice(),
                 tshirt.getQuantity());
+
         int id = jdbcTemplate.queryForObject("select last_insert_id()", Integer.class);
         tshirt.setId(id);
 

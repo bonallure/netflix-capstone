@@ -1,12 +1,12 @@
-package com.company.netflixcapstone.DAO;
+package com.company.netflixcapstone.dao;
 
 import com.company.netflixcapstone.model.Game;
-
 import java.util.List;
 
 /**
  * Created by bonallure on 12/7/21
  */
+
 public interface GameDAO {
 
     Game create(Game game);
