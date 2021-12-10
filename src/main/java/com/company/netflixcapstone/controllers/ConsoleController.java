@@ -33,13 +33,13 @@ public class ConsoleController {
 
     }
 
-    @RequestMapping(value= "/consoles", method= RequestMethod.DELETE)
+    @RequestMapping(value= "/consoles/{id}", method= RequestMethod.DELETE)
     @ResponseStatus(value= HttpStatus.NO_CONTENT)
     public void deleteConsole(@PathVariable int id) {
 
     }
 
-    @RequestMapping(value= "/consoles/{manufacturer}", method= RequestMethod.GET)
+    @RequestMapping(value= "/consoles/manufacturer/{manufacturer}", method= RequestMethod.GET)
     @ResponseStatus(value= HttpStatus.OK)
     public List<Console> getConsolesByManufacturer(@PathVariable String manufacturer) {
         return null;

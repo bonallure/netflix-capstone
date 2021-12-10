@@ -90,7 +90,11 @@ public class ConsoleControllerTest {
                 .andExpect(status().isNoContent());
     }
 
-
-
+    @Test
+    public void testGetConsolesByManufacturer() throws Exception {
+        mockMvc.perform(get("/consoles/manufacturer/sony"))
+                .andDo(print())
+                .andExpect(status().isOk());
+    }
 
 }
