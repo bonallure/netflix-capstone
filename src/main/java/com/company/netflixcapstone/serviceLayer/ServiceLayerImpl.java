@@ -62,7 +62,9 @@ public class ServiceLayerImpl implements ServiceLayer {
     }
     @Override
     public Invoice createTShirtInvoice(Invoice invoice) {
-        ProcessingFee processingFee = processingFeeDAO.read("tshirt");
+
+        ProcessingFee processingFee = processingFeeDAO.read("T-Shirts");
+
         SalesTaxRate salesTaxRate = salesTaxRateDAO.read(invoice.getState());
 
         TShirt shirt = tshirtDAO.read(invoice.getItemId());
