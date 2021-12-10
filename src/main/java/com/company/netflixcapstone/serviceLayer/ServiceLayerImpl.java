@@ -31,31 +31,27 @@ public class ServiceLayerImpl implements ServiceLayer {
     @Autowired
     private SalesTaxRateDAO salesTaxRateDAO;
 
+    // TSHIRT CRUD METHODS
     @Override
     public TShirt addTShirt(TShirt tShirt) {
         return tshirtDAO.create(tShirt);
     }
-
     @Override
     public void updateTShirt(TShirt tShirt) {
         tshirtDAO.update(tShirt);
     }
-
     @Override
     public void deleteTShirt(TShirt tShirt) {
         tshirtDAO.delete(tShirt.getId());
     }
-
     @Override
     public TShirt getTShirt(int tShirtId) {
         return tshirtDAO.read(tShirtId);
     }
-
     @Override
     public List<TShirt> getAllTShirts() {
         return tshirtDAO.readAll();
     }
-
     @Override
     public Invoice createInvoice(Invoice invoice) {
         switch (invoice.getItemType()){
@@ -64,17 +60,18 @@ public class ServiceLayerImpl implements ServiceLayer {
         }
         return null;
     }
-
     @Override
     public Invoice createTShirtInvoice(Invoice invoice) {
         ProcessingFee processingFee = processingFeeDAO.read("tshirt");
         SalesTaxRate salesTaxRate = salesTaxRateDAO.read(invoice.getState());
 
         TShirt shirt = tshirtDAO.read(invoice.getItemId());
+
         if (invoice.getQuantity() <= shirt.getQuantity()){
             // updating the shirt in the database
             shirt.setQuantity(shirt.getQuantity() - invoice.getQuantity());
             tshirtDAO.update(shirt);
+
             // fulfilling the order
             invoice.setUnitPrice(shirt.getPrice());
             double subtotal = shirt.getPrice().doubleValue() * invoice.getQuantity();
