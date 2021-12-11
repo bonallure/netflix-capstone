@@ -44,7 +44,7 @@ public class GameDaoImpl implements GameDAO {
     public Game create(Game game) {
         jdbcTemplate.update(INSERT_GAME_SQL,
                 game.getTitle(),
-                game.getEsrb_rating(),
+                game.getEsrbRating(),
                 game.getDescription(),
                 game.getPrice(),
                 game.getStudio(),
@@ -52,7 +52,7 @@ public class GameDaoImpl implements GameDAO {
 
         int id = jdbcTemplate.queryForObject("select LAST_GAME_ID()", Integer.class);
 
-        game.setGame_id(id);
+        game.setId(id);
 
         return game;
     }
@@ -78,7 +78,7 @@ public class GameDaoImpl implements GameDAO {
         jdbcTemplate.update(
                 UPDATE_GAME_SQL,
                 game.getTitle(),
-                game.getEsrb_rating(),
+                game.getEsrbRating(),
                 game.getDescription(),
                 game.getPrice(),
                 game.getStudio(),
@@ -91,11 +91,11 @@ public class GameDaoImpl implements GameDAO {
     }
     private Game mapRowToGame(ResultSet rs, int rowNum) throws SQLException {
         Game game = new Game();
-        game.setGame_id(rs.getInt("game_id"));
+        game.setId(rs.getInt("game_id"));
         game.setTitle(rs.getString("title"));
-        game.setEsrb_rating(rs.getString("esrb_rating"));
-        game.setDescription(rs.getString("description "));
-        game.setPrice(rs.getDouble("price "));
+        game.setEsrbRating(rs.getString("esrb_rating"));
+        game.setDescription(rs.getString("description"));
+        game.setPrice(rs.getBigDecimal("price"));
         game.setStudio(rs.getString("studio"));
         game.setQuantity(rs.getInt("quantity"));
 

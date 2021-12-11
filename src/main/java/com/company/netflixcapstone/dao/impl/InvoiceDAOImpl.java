@@ -62,7 +62,7 @@ public class InvoiceDAOImpl implements InvoiceDAO {
                 invoice.getTotal());
 
         int id = jdbcTemplate.queryForObject("select last_insert_id()", Integer.class);
-        invoice.setInvoiceId(id);
+        invoice.setId(id);
 
         return invoice;
     }
@@ -99,7 +99,7 @@ public class InvoiceDAOImpl implements InvoiceDAO {
                 invoice.getTax(),
                 invoice.getProcessingFee(),
                 invoice.getTotal(),
-                invoice.getInvoiceId());
+                invoice.getId());
     }
 
     @Override
@@ -111,7 +111,7 @@ public class InvoiceDAOImpl implements InvoiceDAO {
     private Invoice mapToRowInvoice(ResultSet rs, int rowNum) throws SQLException {
 
         Invoice invoice = new Invoice();
-        invoice.setInvoiceId(rs.getInt("invoice_id"));
+        invoice.setId(rs.getInt("invoice_id"));
         invoice.setName(rs.getString("name"));
         invoice.setStreet(rs.getString("street"));
         invoice.setCity(rs.getString("city"));
