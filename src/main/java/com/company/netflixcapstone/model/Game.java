@@ -1,22 +1,23 @@
 package com.company.netflixcapstone.model;
 
+import java.math.BigDecimal;
 import java.util.Objects;
 
 public class Game {
-    private int game_id;
+    private int id;
     private String title;
-    private String esrb_rating;
+    private String esrbRating;
     private String description;
-    private double price;
+    private BigDecimal price;
     private String studio;
     private int quantity;
 
-    public int getGame_id() {
-        return game_id;
+    public int getId() {
+        return id;
     }
 
-    public void setGame_id(int game_id) {
-        this.game_id = game_id;
+    public void setId(int id) {
+        this.id = id;
     }
 
     public String getTitle() {
@@ -27,12 +28,12 @@ public class Game {
         this.title = title;
     }
 
-    public String getEsrb_rating() {
-        return esrb_rating;
+    public String getEsrbRating() {
+        return esrbRating;
     }
 
-    public void setEsrb_rating(String esrb_rating) {
-        this.esrb_rating = esrb_rating;
+    public void setEsrbRating(String esrbRating) {
+        this.esrbRating = esrbRating;
     }
 
     public String getDescription() {
@@ -43,11 +44,11 @@ public class Game {
         this.description = description;
     }
 
-    public double getPrice() {
+    public BigDecimal getPrice() {
         return price;
     }
 
-    public void setPrice(double price) {
+    public void setPrice(BigDecimal price) {
         this.price = price;
     }
 
@@ -70,19 +71,13 @@ public class Game {
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
-        if (!(o instanceof Game)) return false;
-        Game games = (Game) o;
-        return game_id == games.game_id &&
-                Double.compare(games.price, price) == 0 &&
-                quantity == games.quantity &&
-                Objects.equals(title, games.title) &&
-                Objects.equals(esrb_rating, games.esrb_rating) &&
-                Objects.equals(description, games.description) &&
-                Objects.equals(studio, games.studio);
+        if (o == null || getClass() != o.getClass()) return false;
+        Game game = (Game) o;
+        return getId() == game.getId() && getQuantity() == game.getQuantity() && Objects.equals(getTitle(), game.getTitle()) && Objects.equals(getEsrbRating(), game.getEsrbRating()) && Objects.equals(getDescription(), game.getDescription()) && Objects.equals(getPrice(), game.getPrice()) && Objects.equals(getStudio(), game.getStudio());
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(game_id, title, esrb_rating, description, price, studio, quantity);
+        return Objects.hash(getId(), getTitle(), getEsrbRating(), getDescription(), getPrice(), getStudio(), getQuantity());
     }
 }
