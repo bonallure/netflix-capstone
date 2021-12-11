@@ -4,7 +4,7 @@ import java.math.BigDecimal;
 
 public class Invoice {
 
-    private int invoiceId;
+    private int id;
     private String name;
     private String street;
     private String city;
@@ -19,12 +19,12 @@ public class Invoice {
     private BigDecimal processingFee;
     private BigDecimal total;
 
-    public int getInvoiceId() {
-        return invoiceId;
+    public int getId() {
+        return id;
     }
 
-    public void setInvoiceId(int invoiceId) {
-        this.invoiceId = invoiceId;
+    public void setId(int id) {
+        this.id = id;
     }
 
     public String getName() {
@@ -138,7 +138,7 @@ public class Invoice {
 
         Invoice invoice = (Invoice) o;
 
-        if (invoiceId != invoice.invoiceId) return false;
+        if (id != invoice.id) return false;
         if (itemId != invoice.itemId) return false;
         if (quantity != invoice.quantity) return false;
         if (!name.equals(invoice.name)) return false;
@@ -156,7 +156,7 @@ public class Invoice {
 
     @Override
     public int hashCode() {
-        int result = invoiceId;
+        int result = id;
         result = 31 * result + name.hashCode();
         result = 31 * result + street.hashCode();
         result = 31 * result + city.hashCode();
