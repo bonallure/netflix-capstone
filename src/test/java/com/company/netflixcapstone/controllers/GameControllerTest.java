@@ -1,14 +1,18 @@
 package com.company.netflixcapstone.controllers;
 
 import com.company.netflixcapstone.model.Game;
-import com.company.netflixcapstone.serviceLayer.ServiceLayer;
+
+import com.company.netflixcapstone.serviceLayer.GameServiceLayer;
+
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
+
 import org.springframework.boot.test.mock.mockito.MockBean;
+
 import org.springframework.http.MediaType;
 import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.test.web.servlet.MockMvc;
@@ -32,7 +36,7 @@ public class GameControllerTest {
     private ObjectMapper mapper = new ObjectMapper();
 
     @MockBean
-    private ServiceLayer serviceLayer;
+    private GameServiceLayer serviceLayer;
 
     @Before
     public void setUp() {
