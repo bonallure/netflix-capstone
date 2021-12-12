@@ -46,13 +46,13 @@ public class TShirtController {
 
     }
 
-    @RequestMapping(value= "/tshirts/{color}", method= RequestMethod.GET)
+    @RequestMapping(value= "/tshirts/color/{color}", method= RequestMethod.GET)
     @ResponseStatus(value= HttpStatus.OK)
     public List<TShirt> getTShirtsByColor(@PathVariable String color) {
         return null;
     }
 
-    @RequestMapping(value= "/tshirts/{size}", method= RequestMethod.GET)
+    @RequestMapping(value= "/tshirts/size/{size}", method= RequestMethod.GET)
     @ResponseStatus(value= HttpStatus.OK)
     public List<TShirt> getTShirtsBySize(@PathVariable String size) {
         return null;
