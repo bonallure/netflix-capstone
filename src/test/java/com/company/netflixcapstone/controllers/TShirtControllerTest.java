@@ -52,14 +52,14 @@ public class TShirtControllerTest {
 
     @Test
     public void getTShirt() throws Exception {
-        mockMvc.perform(get("/games/1"))
+        mockMvc.perform(get("/tshirts/1"))
                 .andDo(print())
                 .andExpect(status().isOk());
     }
 
     @Test
     public void getAllTShirts() throws Exception {
-        mockMvc.perform(get("/games"))
+        mockMvc.perform(get("/tshirts"))
                 .andDo(print())
                 .andExpect(status().isOk());
     }
