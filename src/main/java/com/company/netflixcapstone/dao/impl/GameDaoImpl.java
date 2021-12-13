@@ -16,7 +16,7 @@ public class GameDaoImpl implements GameDAO {
 
     // prepare statements
     private static final String INSERT_GAME_SQL =
-            "insert into game (game_id, title , esrb_rating , description , price, studio, quantity) values (?, ?, ?, ?, ?,?,?)";
+            "insert into game (title , esrb_rating , description , price, studio, quantity) values (?, ?, ?, ?, ?,?)";
 
     private static final String SELECT_GAME_SQL =
             "select * from game where game_id = ?";
@@ -50,7 +50,7 @@ public class GameDaoImpl implements GameDAO {
                 game.getStudio(),
                 game.getQuantity());
 
-        int id = jdbcTemplate.queryForObject("select LAST_GAME_ID()", Integer.class);
+        int id = jdbcTemplate.queryForObject("select last_insert_id()", Integer.class);
 
         game.setId(id);
 
@@ -82,7 +82,8 @@ public class GameDaoImpl implements GameDAO {
                 game.getDescription(),
                 game.getPrice(),
                 game.getStudio(),
-                game.getQuantity());
+                game.getQuantity(),
+                game.getId());
     }
 
     @Override
