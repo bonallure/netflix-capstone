@@ -1,12 +1,14 @@
 package com.company.netflixcapstone.controllers;
 
 import com.company.netflixcapstone.model.TShirt;
+import com.company.netflixcapstone.serviceLayer.ServiceLayer;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
+import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.http.MediaType;
 import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.test.web.servlet.MockMvc;
@@ -28,6 +30,9 @@ public class TShirtControllerTest {
 
     // objectMapper used to convert to Java Objects to JSON and vice versa
     private ObjectMapper mapper = new ObjectMapper();
+
+    @MockBean
+    private ServiceLayer serviceLayer;
 
     @Before
     public void setUp() {
