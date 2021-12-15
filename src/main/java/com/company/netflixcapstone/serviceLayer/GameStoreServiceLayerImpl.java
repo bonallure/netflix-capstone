@@ -90,8 +90,8 @@ public class GameStoreServiceLayerImpl implements GameStoreServiceLayer {
         tshirtDAO.update(tShirt);
     }
     @Override
-    public void deleteTShirt(TShirt tShirt) {
-        tshirtDAO.delete(tShirt.getId());
+    public void deleteTShirt(int tShirtId) {
+        tshirtDAO.delete(tShirtId);
     }
     @Override
     public TShirt getTShirt(int tShirtId) {
