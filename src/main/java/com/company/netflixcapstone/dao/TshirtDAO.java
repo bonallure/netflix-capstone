@@ -15,6 +15,10 @@ public interface TshirtDAO {
 
     List<TShirt> readAll();
 
+    List<TShirt> getTShirtByColor(int t_shirt_id);
+
+    List<TShirt> getTShirtBySize(int t_shirt_id);
+
     void update(TShirt tshirt);
 
     void delete(int id);

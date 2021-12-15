@@ -15,6 +15,12 @@ public interface GameDAO {
 
     List<Game> readAll();
 
+    List<Game> getGameByStudio(int game_id);
+
+    List<Game> getGameByESRB(int game_id);
+
+    List<Game> getGameByTitle(int game_id);
+
     void update(Game game);
 
     void delete(int id);

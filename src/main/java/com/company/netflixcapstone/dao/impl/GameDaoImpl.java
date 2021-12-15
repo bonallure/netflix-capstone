@@ -30,6 +30,15 @@ public class GameDaoImpl implements GameDAO {
     private static final String DELETE_GAME =
             "delete from game where game_id = ?";
 
+    private static final String SELECT_GAME_BY_STUDIO =
+            "select * from game where studio = ?";
+
+    private static final String SELECT_GAME_BY_ESRB =
+            "select * from game where esrb_rating  = ?";
+
+    private static final String SELECT_GAME_BY_TITLE =
+            "select * from game where title = ?";
+
 
     // declaring and autowirjng the jdbc template
     private JdbcTemplate jdbcTemplate;
@@ -70,7 +79,32 @@ public class GameDaoImpl implements GameDAO {
 
     @Override
     public List<Game> readAll() {
+
         return jdbcTemplate.query(SELECT_ALL_GAMES_SQL, this::mapRowToGame);
+    }
+
+    @Override
+    public List<Game> getGameByStudio(int game_id) {
+        return jdbcTemplate.query(
+                SELECT_GAME_BY_STUDIO,
+                this::mapRowToGame,
+                game_id);
+    }
+
+    @Override
+    public List<Game> getGameByESRB(int game_id) {
+        return jdbcTemplate.query(
+                SELECT_GAME_BY_ESRB,
+                this::mapRowToGame,
+                game_id);
+    }
+
+    @Override
+    public List<Game> getGameByTitle(int game_id) {
+        return jdbcTemplate.query(
+                SELECT_GAME_BY_TITLE,
+                this::mapRowToGame,
+                game_id);
     }
 
     @Override

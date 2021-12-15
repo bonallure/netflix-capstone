@@ -35,6 +35,9 @@ public class ConsoleDAOImpl implements ConsoleDAO {
     private static final String DELETE_CONSOLE =
             "delete from console where console_id = ?";
 
+    private static final String SELECT_CONSOLE_BY_MANUFACTURER  =
+            "select * from console  where manufacturer = ?";
+
     // jdbctemplate
     private JdbcTemplate jdbcTemplate;
 
@@ -73,6 +76,14 @@ public class ConsoleDAOImpl implements ConsoleDAO {
     @Override
     public List<Console> readAll() {
         return jdbcTemplate.query(READ_ALL_CONSOLES, this::mapToRowConsole);
+    }
+
+    @Override
+    public List<Console> getConsoleByManufacturer(String manufacturer) {
+        return jdbcTemplate.query(
+                SELECT_CONSOLE_BY_MANUFACTURER,
+                this::mapToRowConsole,
+                manufacturer);
     }
 
     @Override

@@ -35,6 +35,13 @@ public class TshirtDAOImpl implements TshirtDAO {
     private static final String DELETE_TSHIRT =
             "delete from t_shirt where t_shirt_id = ?";
 
+    private static final String SELECT_TSHIRT_BY_COLOR =
+            "select * from t_shirt  where color = ?";
+
+    private static final String SELECT_TSHIRT_BY_SIZE =
+            "select * from t_shirt  where size = ?";
+
+
     // jdbctemplate
     private JdbcTemplate jdbcTemplate;
 
@@ -74,6 +81,22 @@ public class TshirtDAOImpl implements TshirtDAO {
     public List<TShirt> readAll() {
 
         return jdbcTemplate.query(READ_ALL_TSHIRTS, this::mapToRowTShirt);
+    }
+
+    @Override
+    public List<TShirt> getTShirtByColor(int t_shirt_id) {
+        return jdbcTemplate.query(
+                SELECT_TSHIRT_BY_COLOR,
+                this::mapToRowTShirt,
+                t_shirt_id);
+    }
+
+    @Override
+    public List<TShirt> getTShirtBySize(int t_shirt_id) {
+        return jdbcTemplate.query(
+                SELECT_TSHIRT_BY_SIZE,
+                this::mapToRowTShirt,
+                t_shirt_id);
     }
 
     @Override

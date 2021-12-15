@@ -88,7 +88,7 @@ public class ConsoleDAOImplTest {
 
         // prepare
         Console console2 = new Console();
-        console2.setId(21512);
+        console2.setId(81516);
         console2.setModel("PS5");
         console2.setManufacturer("Sony");
         console2.setMemoryAmount("500");
@@ -106,5 +106,38 @@ public class ConsoleDAOImplTest {
         assertEquals(cList.size(), 2);
 
     }
+    @Test
+    public void getConsolesByManufacturer() {
+        // prepare
+        Console console1 = new Console();
+        console1.setId(21512);
+        console1.setModel("PS5");
+        console1.setManufacturer("Sony");
+        console1.setMemoryAmount("500");
+        console1.setProcessor("Default Processor");
+        console1.setPrice(BigDecimal.valueOf(499.98));
+        console1.setQuantity(1);
 
+        // create act
+        console1 = consoleDAO.create(console1);
+
+        // prepare
+        Console console2 = new Console();
+        console2.setId(12441);
+        console2.setModel("PS4");
+        console2.setManufacturer("Sony");
+        console2.setMemoryAmount("500");
+        console2.setProcessor("Default Processor");
+        console2.setPrice(BigDecimal.valueOf(299.98));
+        console2.setQuantity(2);
+
+        // create act
+        console2 = consoleDAO.create(console2);
+
+        //prepare act
+        List<Console> cList = consoleDAO.getConsoleByManufacturer("Sony");
+        //assert
+        assertEquals(cList.size(), 2);
+
+    }
 }

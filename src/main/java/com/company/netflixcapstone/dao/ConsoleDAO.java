@@ -15,6 +15,8 @@ public interface ConsoleDAO {
 
     List<Console> readAll();
 
+    List<Console> getConsoleByManufacturer(String manufacturer);
+
     void update(Console console);
 
     void delete(int id);
