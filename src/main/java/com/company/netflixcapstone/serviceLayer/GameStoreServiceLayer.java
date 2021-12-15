@@ -15,7 +15,7 @@ public interface GameStoreServiceLayer {
     // Console methods
     Console addConsole(Console console);
     void updateConsole(Console  console);
-    void deleteConsole(Console console);
+    void deleteConsole(int consoleId);
     Console getConsole(int consoleId);
     List<Console> getAllConsoles();
 
