@@ -40,8 +40,8 @@ public class GameStoreServiceLayerImpl implements GameStoreServiceLayer {
     }
 
     @Override
-    public void deleteConsole(Console console) {
-        consoleDAO.delete(console.getId());
+    public void deleteConsole(int consoleId) {
+        consoleDAO.delete(consoleId);
     }
 
     @Override
