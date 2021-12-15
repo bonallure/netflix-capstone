@@ -1,6 +1,6 @@
 package com.company.netflixcapstone.controllers;
 
-import com.company.netflixcapstone.model.Console;
+import com.company.netflixcapstone.model.TShirt;
 import com.company.netflixcapstone.serviceLayer.ServiceLayer;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.junit.Before;
@@ -21,8 +21,8 @@ import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
 @RunWith(SpringRunner.class)
-@WebMvcTest(ConsoleController.class)
-public class ConsoleControllerTest {
+@WebMvcTest(TShirtController.class)
+public class TShirtControllerTest {
 
     //wiring to MockMvc object
     @Autowired
@@ -40,66 +40,69 @@ public class ConsoleControllerTest {
     }
 
     @Test
-    public void testCreateConsole() throws Exception {
-        Console console = new Console();
-        console.setManufacturer("Sony");
-        console.setModel("PlayStation 2");
-        console.setMemoryAmount("8 megabyte");
-        console.setProcessor("128-bit");
-        console.setPrice(new BigDecimal("96.00"));
-        console.setQuantity(1);
+    public void createTShirt() throws Exception {
+        TShirt tShirt = new TShirt();
+        tShirt.setQuantity(1);
+        tShirt.setPrice(new BigDecimal("10.00"));
+        tShirt.setColor("white");
+        tShirt.setDescription("Call of Duty");
+        tShirt.setSize("large");
 
-        String inputJson = mapper.writeValueAsString(console);
+        String inputJson = mapper.writeValueAsString(tShirt);
 
-        mockMvc.perform(post("/consoles").content(inputJson).contentType(MediaType.APPLICATION_JSON))
+        mockMvc.perform(post("/tshirts").content(inputJson).contentType(MediaType.APPLICATION_JSON))
                 .andDo(print())
                 .andExpect(status().isCreated());
     }
 
     @Test
-    public void testGetConsole() throws Exception {
-        mockMvc.perform(get("/consoles/1"))
-                .andDo(print())
-                .andExpect(status().isOk());
-
-    }
-
-    @Test
-    public void testGetAllConsoles() throws Exception {
-        mockMvc.perform(get("/consoles"))
+    public void getTShirt() throws Exception {
+        mockMvc.perform(get("/tshirts/1"))
                 .andDo(print())
                 .andExpect(status().isOk());
     }
 
     @Test
-    public void testDeleteConsole() throws Exception {
-        mockMvc.perform(delete("/consoles/1"))
+    public void getAllTShirts() throws Exception {
+        mockMvc.perform(get("/tshirts"))
+                .andDo(print())
+                .andExpect(status().isOk());
+    }
+
+    @Test
+    public void updateTShirt() throws Exception {
+        TShirt tShirt = new TShirt();
+        tShirt.setQuantity(1);
+        tShirt.setPrice(new BigDecimal("10.00"));
+        tShirt.setColor("white");
+        tShirt.setDescription("Call of Duty");
+        tShirt.setSize("large");
+
+        String inputJson = mapper.writeValueAsString(tShirt);
+
+        mockMvc.perform(put("/tshirts").content(inputJson).contentType(MediaType.APPLICATION_JSON))
                 .andDo(print())
                 .andExpect(status().isNoContent());
     }
 
     @Test
-    public void testUpdateConsole() throws Exception {
-        Console console = new Console();
-        console.setManufacturer("Sony");
-        console.setModel("PlayStation 2");
-        console.setMemoryAmount("8 megabyte");
-        console.setProcessor("128-bit");
-        console.setPrice(new BigDecimal("96.00"));
-        console.setQuantity(1);
-
-        String inputJson = mapper.writeValueAsString(console);
-
-        mockMvc.perform(put("/consoles").content(inputJson).contentType(MediaType.APPLICATION_JSON))
+    public void deleteTShirt() throws Exception {
+        mockMvc.perform(delete("/tshirts/1"))
                 .andDo(print())
                 .andExpect(status().isNoContent());
     }
 
     @Test
-    public void testGetConsolesByManufacturer() throws Exception {
-        mockMvc.perform(get("/consoles/manufacturer/sony"))
+    public void getTShirtsByColor() throws Exception {
+        mockMvc.perform(get("/tshirts/color/red"))
                 .andDo(print())
                 .andExpect(status().isOk());
     }
 
+    @Test
+    public void getTShirtsBySize() throws Exception {
+        mockMvc.perform(get("/tshirts/size/large"))
+                .andDo(print())
+                .andExpect(status().isOk());
+    }
 }
