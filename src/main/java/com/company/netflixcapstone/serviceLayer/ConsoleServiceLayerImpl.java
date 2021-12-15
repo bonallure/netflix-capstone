@@ -9,6 +9,7 @@ import com.company.netflixcapstone.model.Invoice;
 import com.company.netflixcapstone.model.ProcessingFee;
 import com.company.netflixcapstone.model.SalesTaxRate;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import java.math.BigDecimal;
 import java.util.List;
@@ -16,6 +17,7 @@ import java.util.List;
 /**
  * Created by bonallure on 12/14/21
  */
+@Service
 public class ConsoleServiceLayerImpl implements ConsoleServiceLayer {
 
     // wiring in the dao's
