@@ -6,9 +6,9 @@ import com.company.netflixcapstone.model.TShirt;
 import java.util.List;
 
 /**
- * Created by bonallure on 12/9/21
+ * Created by bonallure on 12/14/21
  */
-public interface ServiceLayer {
+public interface TShirtServiceLayer {
 
     // TShirt methods
     TShirt addTShirt(TShirt tShirt);
@@ -17,7 +17,6 @@ public interface ServiceLayer {
     TShirt getTShirt(int tShirtId);
     List<TShirt> getAllTShirts();
 
-    // Invoice methods
     Invoice createInvoice(Invoice invoice);
-    Invoice createTShirtInvoice(Invoice invoice);
+
 }

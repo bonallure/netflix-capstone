@@ -1,88 +1,81 @@
 package com.company.netflixcapstone.serviceLayer;
 
+import com.company.netflixcapstone.dao.ConsoleDAO;
 import com.company.netflixcapstone.dao.InvoiceDAO;
 import com.company.netflixcapstone.dao.ProcessingFeeDAO;
 import com.company.netflixcapstone.dao.SalesTaxRateDAO;
-import com.company.netflixcapstone.dao.TshirtDAO;
+import com.company.netflixcapstone.model.Console;
 import com.company.netflixcapstone.model.Invoice;
 import com.company.netflixcapstone.model.ProcessingFee;
 import com.company.netflixcapstone.model.SalesTaxRate;
-import com.company.netflixcapstone.model.TShirt;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
 
 import java.math.BigDecimal;
 import java.util.List;
 
 /**
- * Created by bonallure on 12/9/21
+ * Created by bonallure on 12/14/21
  */
-
-@Service
-public class ServiceLayerImpl implements ServiceLayer {
+public class ConsoleServiceLayerImpl implements ConsoleServiceLayer {
 
     // wiring in the dao's
-    @Autowired
-    private TshirtDAO tshirtDAO;
     @Autowired
     private InvoiceDAO invoiceDAO;
     @Autowired
     private ProcessingFeeDAO processingFeeDAO;
     @Autowired
     private SalesTaxRateDAO salesTaxRateDAO;
+    @Autowired
+    private ConsoleDAO consoleDAO;
 
-    // TSHIRT CRUD METHODS
     @Override
-    public TShirt addTShirt(TShirt tShirt) {
-        return tshirtDAO.create(tShirt);
+    public Console addConsole(Console console) {
+        return consoleDAO.create(console);
     }
+
     @Override
-    public void updateTShirt(TShirt tShirt) {
-        tshirtDAO.update(tShirt);
+    public void updateConsole(Console console) {
+        consoleDAO.update(console);
     }
+
     @Override
-    public void deleteTShirt(TShirt tShirt) {
-        tshirtDAO.delete(tShirt.getId());
+    public void deleteConsole(Console console) {
+        consoleDAO.delete(console.getId());
     }
+
     @Override
-    public TShirt getTShirt(int tShirtId) {
-        return tshirtDAO.read(tShirtId);
+    public Console getConsole(int consoleId) {
+        return consoleDAO.read(consoleId);
     }
+
     @Override
-    public List<TShirt> getAllTShirts() {
-        return tshirtDAO.readAll();
+    public List<Console> getAllConsoles() {
+        return consoleDAO.readAll();
     }
+
     @Override
     public Invoice createInvoice(Invoice invoice) {
-        switch (invoice.getItemType()){
-            case "tshirt":
-                return createTShirtInvoice(invoice);
-        }
-        return null;
-    }
-    @Override
-    public Invoice createTShirtInvoice(Invoice invoice) {
 
-        ProcessingFee processingFee = processingFeeDAO.read("T-Shirts");
-
+        ProcessingFee processingFee = processingFeeDAO.read("console");
         SalesTaxRate salesTaxRate = salesTaxRateDAO.read(invoice.getState());
+        Console console = consoleDAO.read(invoice.getItemId());
 
-        TShirt shirt = tshirtDAO.read(invoice.getItemId());
-
-        if (invoice.getQuantity() <= shirt.getQuantity()){
+        if (invoice.getQuantity() <= console.getQuantity()){
             // updating the shirt in the database
-            shirt.setQuantity(shirt.getQuantity() - invoice.getQuantity());
-            tshirtDAO.update(shirt);
+            console.setQuantity(console.getQuantity() - invoice.getQuantity());
+            consoleDAO.update(console);
 
             // fulfilling the order
-            invoice.setUnitPrice(shirt.getPrice());
-            double subtotal = shirt.getPrice().doubleValue() * invoice.getQuantity();
+            invoice.setUnitPrice(console.getPrice());
+            double subtotal = console.getPrice().doubleValue() * invoice.getQuantity();
             invoice.setSubtotal(BigDecimal.valueOf(subtotal));
             double tax = salesTaxRate.getRate().doubleValue() * subtotal;
             invoice.setTax(BigDecimal.valueOf(tax));
             invoice.setProcessingFee(processingFee.getFee());
             double total = subtotal + tax + processingFee.getFee().doubleValue();
             invoice.setTotal(BigDecimal.valueOf(total));
+
+            invoice = invoiceDAO.create(invoice);
 
             return invoice;
         }

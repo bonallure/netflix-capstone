@@ -2,7 +2,8 @@ package com.company.netflixcapstone.controllers;
 
 
 import com.company.netflixcapstone.model.TShirt;
-import com.company.netflixcapstone.serviceLayer.ServiceLayer;
+import com.company.netflixcapstone.serviceLayer.GameServiceLayer;
+import com.company.netflixcapstone.serviceLayer.TShirtServiceLayer;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
@@ -13,7 +14,7 @@ import java.util.List;
 public class TShirtController {
 
     @Autowired
-    private ServiceLayer serviceLayer;
+    private TShirtServiceLayer serviceLayer;
 
     @RequestMapping(value= "/tshirts", method= RequestMethod.POST)
     @ResponseStatus(value= HttpStatus.CREATED)
