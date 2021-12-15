@@ -114,8 +114,8 @@ public class GameStoreServiceLayerImpl implements GameStoreServiceLayer {
     }
 
     @Override
-    public void deleteGame(Game game) {
-        gameDAO.delete(game.getId());
+    public void deleteGame(int gameId) {
+        gameDAO.delete(gameId);
     }
 
     @Override
