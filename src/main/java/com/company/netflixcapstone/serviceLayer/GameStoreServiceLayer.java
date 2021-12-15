@@ -18,6 +18,7 @@ public interface GameStoreServiceLayer {
     void deleteConsole(int consoleId);
     Console getConsole(int consoleId);
     List<Console> getAllConsoles();
+    List<Console> getConsolesByManufacturer(String manufacturer);
 
     // Invoice methods
     Invoice addInvoice(Invoice invoice);

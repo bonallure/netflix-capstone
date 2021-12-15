@@ -47,6 +47,6 @@ public class ConsoleController {
     @RequestMapping(value= "/consoles/manufacturer/{manufacturer}", method= RequestMethod.GET)
     @ResponseStatus(value= HttpStatus.OK)
     public List<Console> getConsolesByManufacturer(@PathVariable String manufacturer) {
-        return null;
+        return serviceLayer.getConsolesByManufacturer(manufacturer);
     }
 }

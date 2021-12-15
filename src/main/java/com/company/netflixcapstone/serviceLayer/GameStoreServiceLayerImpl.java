@@ -54,6 +54,10 @@ public class GameStoreServiceLayerImpl implements GameStoreServiceLayer {
         return consoleDAO.readAll();
     }
 
+    @Override
+    public List<Console> getConsolesByManufacturer(String manufacturer) {
+        return consoleDAO.getConsoleByManufacturer(manufacturer);
+    }
     // INVOICE CRUD METHODS
     @Override
     public Invoice addInvoice(Invoice invoice) {
