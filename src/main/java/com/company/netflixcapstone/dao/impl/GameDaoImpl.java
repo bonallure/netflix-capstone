@@ -25,7 +25,7 @@ public class GameDaoImpl implements GameDAO {
             "select * from game";
 
     private static final String UPDATE_GAME_SQL =
-            "update game set title = ?, esrb_rating = ?, description  = ?, price = ?, studio = ?, quantity = ?, where game_id = ?";
+            "update game set title = ?, esrb_rating = ?, description  = ?, price = ?, studio = ?, quantity = ? where game_id = ?";
 
     private static final String DELETE_GAME =
             "delete from game where game_id = ?";
