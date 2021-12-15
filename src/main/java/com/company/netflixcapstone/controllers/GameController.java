@@ -46,19 +46,19 @@ public class GameController {
     @RequestMapping(value= "/games/studio/{studio}", method= RequestMethod.GET)
     @ResponseStatus(value= HttpStatus.OK)
     public List<Game>  getGamesByStudio(@PathVariable String studio) {
-        return null;
+        return serviceLayer.getGamesByStudio(studio);
     }
 
     @RequestMapping(value= "/games/esrb/{esrb}", method= RequestMethod.GET)
     @ResponseStatus(value= HttpStatus.OK)
     public List<Game> getGamesByESRB(@PathVariable String esrb) {
-        return null;
+        return serviceLayer.getGamesByESRB(esrb);
     }
 
     @RequestMapping(value= "/games/title/{title}", method= RequestMethod.GET)
     @ResponseStatus(value= HttpStatus.OK)
     public List<Game> getGamesByTitle(@PathVariable String title) {
-        return null;
+        return serviceLayer.getGamesByTitle(title);
     }
 
 }
