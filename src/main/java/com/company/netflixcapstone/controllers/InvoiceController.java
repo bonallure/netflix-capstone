@@ -15,8 +15,6 @@ public class InvoiceController {
     @RequestMapping(value= "/invoices", method= RequestMethod.POST)
     @ResponseStatus(value= HttpStatus.CREATED)
     public Invoice createInvoice(@RequestBody Invoice invoice) {
-        System.out.println("NAME:::::"+invoice.getName());
-
         return serviceLayer.createInvoice(invoice);
     }
 }
