@@ -84,19 +84,19 @@ public class TshirtDAOImpl implements TshirtDAO {
     }
 
     @Override
-    public List<TShirt> getTShirtByColor(int t_shirt_id) {
+    public List<TShirt> getTShirtByColor(String color) {
         return jdbcTemplate.query(
                 SELECT_TSHIRT_BY_COLOR,
                 this::mapToRowTShirt,
-                t_shirt_id);
+                color);
     }
 
     @Override
-    public List<TShirt> getTShirtBySize(int t_shirt_id) {
+    public List<TShirt> getTShirtBySize(String size) {
         return jdbcTemplate.query(
                 SELECT_TSHIRT_BY_SIZE,
                 this::mapToRowTShirt,
-                t_shirt_id);
+                size);
     }
 
     @Override

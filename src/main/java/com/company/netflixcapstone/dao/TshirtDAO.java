@@ -15,9 +15,9 @@ public interface TshirtDAO {
 
     List<TShirt> readAll();
 
-    List<TShirt> getTShirtByColor(int t_shirt_id);
+    List<TShirt> getTShirtByColor(String color);
 
-    List<TShirt> getTShirtBySize(int t_shirt_id);
+    List<TShirt> getTShirtBySize(String size);
 
     void update(TShirt tshirt);
 
