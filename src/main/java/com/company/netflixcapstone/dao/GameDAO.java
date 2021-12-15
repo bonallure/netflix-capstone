@@ -15,11 +15,11 @@ public interface GameDAO {
 
     List<Game> readAll();
 
-    List<Game> getGameByStudio(int game_id);
+    List<Game> getGamesByStudio(String studio);
 
-    List<Game> getGameByESRB(int game_id);
+    List<Game> getGamesByESRB(String esrb);
 
-    List<Game> getGameByTitle(int game_id);
+    List<Game> getGamesByTitle(String title);
 
     void update(Game game);
 

@@ -132,6 +132,18 @@ public class GameStoreServiceLayerImpl implements GameStoreServiceLayer {
         return gameDAO.readAll();
     }
 
+    @Override
+    public List<Game> getGamesByStudio(String studio) {
+        return gameDAO.getGamesByStudio(studio);
+    }
+    @Override
+    public List<Game> getGamesByESRB(String esrb) {
+        return gameDAO.getGamesByESRB(esrb);
+    }
+    @Override
+    public List<Game> getGamesByTitle(String title) {
+        return gameDAO.getGamesByTitle(title);
+    }
     // creating the invoice
     public Invoice createInvoice(Invoice invoice) {
 

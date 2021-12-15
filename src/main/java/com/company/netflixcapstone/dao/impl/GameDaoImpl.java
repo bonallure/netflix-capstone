@@ -84,27 +84,27 @@ public class GameDaoImpl implements GameDAO {
     }
 
     @Override
-    public List<Game> getGameByStudio(int game_id) {
+    public List<Game> getGamesByStudio(String studio) {
         return jdbcTemplate.query(
                 SELECT_GAME_BY_STUDIO,
                 this::mapRowToGame,
-                game_id);
+                studio);
     }
 
     @Override
-    public List<Game> getGameByESRB(int game_id) {
+    public List<Game> getGamesByESRB(String esrb) {
         return jdbcTemplate.query(
                 SELECT_GAME_BY_ESRB,
                 this::mapRowToGame,
-                game_id);
+                esrb);
     }
 
     @Override
-    public List<Game> getGameByTitle(int game_id) {
+    public List<Game> getGamesByTitle(String title) {
         return jdbcTemplate.query(
                 SELECT_GAME_BY_TITLE,
                 this::mapRowToGame,
-                game_id);
+                title);
     }
 
     @Override

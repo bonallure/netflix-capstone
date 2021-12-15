@@ -40,6 +40,9 @@ public interface GameStoreServiceLayer {
     void deleteGame(int gameId);
     Game getGame(int gameId);
     List<Game> getAllGames();
+    List<Game> getGamesByStudio(String studio);
+    List<Game> getGamesByESRB(String esrb);
+    List<Game> getGamesByTitle(String title);
 
     Invoice createInvoice(Invoice invoice);
 }
