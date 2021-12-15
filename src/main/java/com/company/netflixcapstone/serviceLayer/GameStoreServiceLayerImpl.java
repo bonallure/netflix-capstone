@@ -106,6 +106,14 @@ public class GameStoreServiceLayerImpl implements GameStoreServiceLayer {
         return tshirtDAO.readAll();
     }
 
+    @Override
+    public List<TShirt> getTShirtsByColor(String color) {
+        return tshirtDAO.getTShirtByColor(color);
+    }
+    @Override
+    public List<TShirt> getTShirtsBySize(String size) {
+        return tshirtDAO.getTShirtBySize(size);
+    }
     // GAME CRUD METHODS
     @Override
     public Game addGame(Game game) {

@@ -33,7 +33,8 @@ public interface GameStoreServiceLayer {
     void deleteTShirt(int tShirtId);
     TShirt getTShirt(int tShirtId);
     List<TShirt> getAllTShirts();
-
+    List<TShirt> getTShirtsByColor(String color);
+    List<TShirt> getTShirtsBySize(String size);
     // Game methods
     Game addGame(Game game);
     void updateGame(Game  game);
