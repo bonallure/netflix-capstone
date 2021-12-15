@@ -29,7 +29,7 @@ public interface GameStoreServiceLayer {
     // TShirt methods
     TShirt addTShirt(TShirt tShirt);
     void updateTShirt(TShirt tShirt);
-    void deleteTShirt(TShirt tShirt);
+    void deleteTShirt(int tShirtId);
     TShirt getTShirt(int tShirtId);
     List<TShirt> getAllTShirts();
 

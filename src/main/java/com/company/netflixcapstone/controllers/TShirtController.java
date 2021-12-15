@@ -24,25 +24,25 @@ public class TShirtController {
     @RequestMapping(value= "/tshirts/{id}", method= RequestMethod.GET)
     @ResponseStatus(value= HttpStatus.OK)
     public TShirt getTShirt(@PathVariable int id) {
-        return null;
+        return serviceLayer.getTShirt(id);
     }
 
     @RequestMapping(value= "/tshirts", method= RequestMethod.GET)
     @ResponseStatus(value= HttpStatus.OK)
     public List<TShirt> getAllTShirts() {
-        return null;
+        return serviceLayer.getAllTShirts();
     }
 
     @RequestMapping(value= "/tshirts", method= RequestMethod.PUT)
     @ResponseStatus(value= HttpStatus.NO_CONTENT)
     public void updateTShirt(@RequestBody TShirt tShirt) {
-
+        serviceLayer.updateTShirt(tShirt);
     }
 
     @RequestMapping(value= "/tshirts/{id}", method= RequestMethod.DELETE)
     @ResponseStatus(value= HttpStatus.NO_CONTENT)
     public void deleteTShirt(@PathVariable int id) {
-
+        serviceLayer.deleteTShirt(id);
     }
 
     @RequestMapping(value= "/tshirts/color/{color}", method= RequestMethod.GET)
