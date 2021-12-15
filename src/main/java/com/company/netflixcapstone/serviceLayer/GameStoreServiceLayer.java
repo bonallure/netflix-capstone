@@ -36,7 +36,7 @@ public interface GameStoreServiceLayer {
     // Game methods
     Game addGame(Game game);
     void updateGame(Game  game);
-    void deleteGame(Game game);
+    void deleteGame(int gameId);
     Game getGame(int gameId);
     List<Game> getAllGames();
 
