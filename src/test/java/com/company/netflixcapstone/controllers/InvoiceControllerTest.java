@@ -1,7 +1,7 @@
 package com.company.netflixcapstone.controllers;
 
 import com.company.netflixcapstone.model.Invoice;
-import com.company.netflixcapstone.serviceLayer.ServiceLayer;
+import com.company.netflixcapstone.serviceLayer.GameStoreServiceLayer;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.junit.Before;
 import org.junit.Test;
@@ -27,7 +27,7 @@ public class InvoiceControllerTest {
     private ObjectMapper mapper = new ObjectMapper();
 
     @MockBean
-    private ServiceLayer serviceLayer;
+    private GameStoreServiceLayer serviceLayer;
 
     @Before
     public void setUp() {
