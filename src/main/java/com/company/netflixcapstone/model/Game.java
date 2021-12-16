@@ -1,14 +1,28 @@
 package com.company.netflixcapstone.model;
 
+import javax.validation.constraints.DecimalMin;
+import javax.validation.constraints.Digits;
+import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.Size;
 import java.math.BigDecimal;
 import java.util.Objects;
 
 public class Game {
     private int id;
+    @NotEmpty(message = "Title must not be empty")
+    @Size(max= 50, message = "Title must not exceed 50 characters")
     private String title;
+    @NotEmpty(message= "ESRB rating must not be empty")
+    @Size(max= 50, message = "ESRB rating must not exceed 50 characters")
     private String esrbRating;
+    @NotEmpty(message= "Description must not be empty")
+    @Size(max= 255, message = "Description must not exceed 255 characters")
     private String description;
+    @DecimalMin(value= "0.0", message = "Price must be greater or equal to 0.0")
+    @Digits(integer= 5, fraction= 2, message = "Price integer part must be 5 digits and Price fractional part must be 2 digits")
     private BigDecimal price;
+    @NotEmpty(message= "Studio must not be empty")
+    @Size(max= 50, message = "Studio must not exceed 50 characters")
     private String studio;
     private int quantity;
 

@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
 import java.util.List;
 
 @RestController
@@ -15,7 +16,7 @@ public class GameController {
 
     @RequestMapping(value= "/games", method= RequestMethod.POST)
     @ResponseStatus(value= HttpStatus.CREATED)
-    public Game createGame(@RequestBody Game game) {
+    public Game createGame(@RequestBody @Valid Game game) {
         return serviceLayer.addGame(game);
     }
 
@@ -33,7 +34,7 @@ public class GameController {
 
     @RequestMapping(value= "/games", method= RequestMethod.PUT)
     @ResponseStatus(value= HttpStatus.NO_CONTENT)
-    public void updateGame(@RequestBody Game game) {
+    public void updateGame(@RequestBody @Valid Game game) {
         serviceLayer.updateGame(game);
     }
 
