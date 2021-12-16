@@ -1,22 +1,47 @@
 package com.company.netflixcapstone.model;
 
+import javax.validation.constraints.*;
 import java.math.BigDecimal;
 
 public class Invoice {
 
     private int id;
+    @NotEmpty(message = "Name must not be empty")
+    @Size(min = 1, max = 80, message = "Name must not exceed 80 characters")
     private String name;
+    @NotEmpty(message = "Street must not be empty")
+    @Size(min = 1, max = 30, message = "Street must not exceed 30 characters")
     private String street;
+    @NotEmpty(message = "City must not be empty")
+    @Size(min = 1, max = 30, message = "City must not exceed 30 characters")
     private String city;
+    @NotEmpty(message = "State must not be empty")
+    @Size(min = 1, max = 30, message = "State must not exceed 30 characters")
     private String state;
+    @NotEmpty(message = "Zipcode must not be empty")
+    @Size(min = 5, max = 5, message = "Zipcode must only be 5 characters")
     private String zipcode;
+    @NotEmpty(message = "Item type must not be empty")
+    @Size(min = 1, max = 20, message = "Item type must not exceed 20 characters")
     private String itemType;
+    @Min(value = 1, message = "Item id must be greater than or equal to 1")
     private int itemId;
+    @DecimalMin(value= "0.0", message = "Unit price must be greater or equal to 0.0")
+    @Digits(integer= 5, fraction= 2, message = "Unit price integer part must be 5 digits and Price fractional part must be 2 digits")
     private BigDecimal unitPrice;
+    @Min(value = 1, message = "Quantity must be greater than or equal to 1")
     private int quantity;
+    @DecimalMin(value= "0.0", message = "Sub total must be greater or equal to 0.0")
+    @Digits(integer= 11, fraction= 2, message = "Sub total integer part must be 11 digits and Price fractional part must be 2 digits")
     private BigDecimal subtotal;
+    @DecimalMin(value= "0.0", message = "Tax must be greater or equal to 0.0")
+    @Digits(integer= 5, fraction= 2, message = "Tax integer part must be 5 digits and Price fractional part must be 2 digits")
     private BigDecimal tax;
+    @DecimalMin(value= "0.0", message = "Processing fee must be greater or equal to 0.0")
+    @Digits(integer= 5, fraction= 2, message = "Processing fee integer part must be 5 digits and Price fractional part must be 2 digits")
     private BigDecimal processingFee;
+    @DecimalMin(value= "0.0", message = "Total must be greater or equal to 0.0")
+    @Digits(integer= 11, fraction= 2, message = "Total integer part must be 11 digits and Price fractional part must be 2 digits")
     private BigDecimal total;
 
     public int getId() {
