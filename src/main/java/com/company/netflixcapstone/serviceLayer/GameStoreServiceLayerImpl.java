@@ -182,7 +182,7 @@ public class GameStoreServiceLayerImpl implements GameStoreServiceLayer {
             }
         }
         if (itemType.equals("console")){
-            ProcessingFee processingFee = processingFeeDAO.read("console");
+            ProcessingFee processingFee = processingFeeDAO.read("Consoles");
             Console console = consoleDAO.read(invoice.getItemId());
             if (invoice.getQuantity() <= console.getQuantity()){
                 // updating the shirt in the database
@@ -205,7 +205,7 @@ public class GameStoreServiceLayerImpl implements GameStoreServiceLayer {
             }
         }
         if (itemType.equals("game")){
-            ProcessingFee processingFee = processingFeeDAO.read("game");
+            ProcessingFee processingFee = processingFeeDAO.read("Games");
             Game game = gameDAO.read(invoice.getItemId());
             if (invoice.getQuantity() <= game.getQuantity()){
                 // updating the shirt in the database
