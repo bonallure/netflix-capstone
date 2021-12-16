@@ -1,14 +1,26 @@
 package com.company.netflixcapstone.model;
 
+import javax.validation.constraints.DecimalMin;
+import javax.validation.constraints.Digits;
+import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.Size;
 import java.math.BigDecimal;
 import java.util.Objects;
 
 public class TShirt {
 
     private int id;
+    @NotEmpty(message = "Size must not be empty")
+    @Size(min = 1, max= 20, message = "Size must not exceed 20 characters")
     private String size;
+    @NotEmpty(message = "Color must not be empty")
+    @Size(min = 1, max= 20, message = "Color must not exceed 20 characters")
     private String color;
+    @NotEmpty(message = "Description must not be empty")
+    @Size(min = 1, max= 255, message = "Description must not exceed 255 characters")
     private String description;
+    @DecimalMin(value= "0.0", message = "Price must be greater or equal to 0.0")
+    @Digits(integer= 5, fraction= 2, message = "Price integer part must be 5 digits and Price fractional part must be 2 digits")
     private BigDecimal price;
     private int quantity;
 
