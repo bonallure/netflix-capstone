@@ -10,16 +10,16 @@ import java.util.Objects;
 public class Console {
     private int id;
     @NotEmpty(message = "Model must not be empty")
-    @Size(max = 50, message = "Model must not exceed 50 characters")
+    @Size(min = 1, max = 50, message = "Model must not exceed 50 characters")
     private String model;
     @NotEmpty(message = "Manufacturer must not be empty")
-    @Size(max = 50, message = "Manufacturer must not exceed 50 characters")
+    @Size(min = 1, max = 50, message = "Manufacturer must not exceed 50 characters")
     private String manufacturer;
     @NotEmpty(message = "Memory amount must not be empty")
-    @Size(max = 20, message = "Memory amount must not exceed 20 characters")
+    @Size(min = 1, max = 20, message = "Memory amount must not exceed 20 characters")
     private String memoryAmount;
     @NotEmpty(message = "Processor must not be empty")
-    @Size(max = 20, message = "Processor must not exceed 20 characters")
+    @Size(min = 1, max = 20, message = "Processor must not exceed 20 characters")
     private String processor;
     @DecimalMin(value= "0.0", message = "Price must be greater or equal to 0.0")
     @Digits(integer= 5, fraction= 2, message = "Price integer part must be 5 digits and Price fractional part must be 2 digits")
